@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -80,16 +81,17 @@ const Index = () => {
     }
 }`;
 
-  const handlerCode = `public class SubmitOrderHandler : ICommandHandler<SubmitOrderCommand>
+  // Update the handler code to use actions instead of command handlers
+  const handlerCode = `public class SubmitOrderAction : IAction<SubmitOrderCommand>
 {
     private readonly IRepository<Order, OrderId> _orderRepository;
     
-    public SubmitOrderHandler(IRepository<Order, OrderId> orderRepository)
+    public SubmitOrderAction(IRepository<Order, OrderId> orderRepository)
     {
         _orderRepository = orderRepository;
     }
     
-    public async Task HandleAsync(SubmitOrderCommand command)
+    public async Task ExecuteAsync(SubmitOrderCommand command)
     {
         var order = await _orderRepository.GetByIdAsync(command.OrderId);
         if (order == null)
@@ -100,7 +102,7 @@ const Index = () => {
     }
 }`;
 
-  // FAQ items
+  // FAQ items - update the database question
   const faqItems = [
     {
       question: "What is Domain-Driven Design?",
@@ -119,8 +121,8 @@ const Index = () => {
       answer: "Absolutely! OpenDDD is designed to work alongside your existing code. You can gradually introduce DDD concepts to specific parts of your application without rewriting everything."
     },
     {
-      question: "Does OpenDDD require a specific database?",
-      answer: "No, OpenDDD is database-agnostic. It works with Entity Framework Core, Dapper, or any other data access technology you prefer."
+      question: "What database technologies does OpenDDD support?",
+      answer: "OpenDDD is designed with a flexible persistence approach offering two persistence providers: Entity Framework Core and OpenDDD's own persistence provider. It supports multiple database technologies through database providers, with current support for SQLite and PostgreSQL. This design allows for clean separation between your domain model and the underlying database technology."
     }
   ];
   
@@ -275,13 +277,13 @@ const Index = () => {
             </div>
             
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Command Handlers</h3>
+              <h3 className="text-xl font-semibold mb-4">Action Pattern</h3>
               <p className="text-foreground/70 mb-4">
-                Keep your application services clean and focused with dedicated command handlers.
+                Keep your application services clean and focused with dedicated actions.
               </p>
               <CodeBlock 
                 code={handlerCode} 
-                title="SubmitOrderHandler.cs"
+                title="SubmitOrderAction.cs"
                 language="csharp"
               />
             </div>
@@ -323,7 +325,7 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Getting Started</h3>
               <p className="text-foreground/70 mb-4">New to OpenDDD? Start here with our step-by-step guide.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
                 View Guide <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -331,7 +333,7 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Core Concepts</h3>
               <p className="text-foreground/70 mb-4">Learn about the fundamental principles behind OpenDDD.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/", "_blank")}>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
                 Explore Concepts <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -339,7 +341,7 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">API Reference</h3>
               <p className="text-foreground/70 mb-4">Detailed documentation of all OpenDDD APIs and abstractions.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/api.html", "_blank")}>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
                 View API <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -359,11 +361,11 @@ const Index = () => {
               Start building maintainable, domain-focused applications today with OpenDDD.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
+              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/", "_blank")}>
+              <Button size="lg" variant="outline" className="px-6" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
                 View Documentation
               </Button>
             </div>
@@ -443,4 +445,3 @@ const Index = () => {
 };
 
 export default Index;
-

@@ -80,7 +80,7 @@ const Navbar = () => {
             <Github className="h-5 w-5" />
             <span className="text-sm font-medium">GitHub</span>
           </a>
-          <Button onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
+          <Button onClick={() => window.open("https://docs.openddd.net", "_blank")}>
             Get Started
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -132,7 +132,7 @@ const Navbar = () => {
               <span className="font-medium">GitHub</span>
             </a>
             <a 
-              href="https://docs.openddd.net/en/latest/" 
+              href="https://docs.openddd.net" 
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-foreground"
@@ -141,7 +141,7 @@ const Navbar = () => {
               <Book className="h-5 w-5" />
               <span className="font-medium">Documentation</span>
             </a>
-            <Button className="w-full justify-center" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
+            <Button className="w-full justify-center" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
