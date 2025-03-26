@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { X } from 'lucide-react';
+import { X, Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -16,7 +16,10 @@ const Footer: React.FC = () => {
               <span className="sr-only">X (formerly Twitter)</span>
               <X className="h-5 w-5" />
             </a>
-            {/* Additional social icons can be added here */}
+            <a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-white hover:text-white/80 transition-colors">
+              <span className="sr-only">GitHub</span>
+              <Github className="h-5 w-5" />
+            </a>
           </div>
         </div>
       </div>

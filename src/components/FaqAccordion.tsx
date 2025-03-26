@@ -9,11 +9,30 @@ interface FaqItem {
 }
 
 interface FaqAccordionProps {
-  items: FaqItem[];
+  items?: FaqItem[];
   className?: string;
 }
 
-const FaqAccordion: React.FC<FaqAccordionProps> = ({ items, className }) => {
+const defaultFaqItems: FaqItem[] = [
+  {
+    question: "What is OpenDDD?",
+    answer: "OpenDDD is a powerful, lightweight framework for Domain-Driven Design in ASP.NET Core. It helps you build clean, scalable, and maintainable .NET applications with ease."
+  },
+  {
+    question: "How do I get started with OpenDDD?",
+    answer: "You can get started by visiting our documentation at docs.openddd.net and following the quick start guide. You can also check out our GitHub repository for examples and code samples."
+  },
+  {
+    question: "Is OpenDDD free to use?",
+    answer: "Yes, OpenDDD is an open-source project and is completely free to use in your projects, both personal and commercial."
+  },
+  {
+    question: "Can I contribute to OpenDDD?",
+    answer: "Absolutely! We welcome contributions from the community. Check out our GitHub repository and look for issues labeled 'good first issue' to get started."
+  }
+];
+
+const FaqAccordion: React.FC<FaqAccordionProps> = ({ items = defaultFaqItems, className }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleItem = (index: number) => {

@@ -1,11 +1,13 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Star, Users, User, Lightbulb } from 'lucide-react';
+import { Star, Users, User, Lightbulb, Quote } from 'lucide-react';
 
 interface TestimonialCardProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  quote?: string;
+  author?: string;
   icon?: React.ElementType;
   scenario?: string;
   rating?: number;
@@ -15,11 +17,18 @@ interface TestimonialCardProps {
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   title,
   description,
-  icon: Icon = Lightbulb,
+  quote,
+  author,
+  icon: Icon = Quote,
   scenario,
   rating = 0,
   className,
 }) => {
+  // If quote and author are provided, but title and description aren't,
+  // use the quote as description and author as title
+  const displayTitle = title || author || '';
+  const displayDescription = description || quote || '';
+
   return (
     <div className={cn(
       "flex flex-col p-6 rounded-xl border border-border bg-white shadow-sm",
@@ -29,7 +38,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         <div className="bg-primary/10 p-2 rounded-full mr-3">
           <Icon className="h-5 w-5 text-primary" />
         </div>
-        <h3 className="font-semibold text-lg">{title}</h3>
+        <h3 className="font-semibold text-lg">{displayTitle}</h3>
       </div>
       
       {rating > 0 && (
@@ -40,7 +49,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </div>
       )}
       
-      <p className="text-foreground/90 mb-4">{description}</p>
+      <p className="text-foreground/90 mb-4">{displayDescription}</p>
       
       {scenario && (
         <div className="mt-auto pt-4 border-t border-border">
