@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -24,6 +25,30 @@ import FaqAccordion from '@/components/FaqAccordion';
 import Navbar from '@/components/Navbar';
 
 const Index = () => {
+  const startupCode = `using OpenDDD.API.Extensions;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add OpenDDD services
+builder.Services.AddOpenDDD(builder.Configuration, options =>  
+{  
+    options.UseInMemoryDatabase()    
+           .UseInMemoryMessaging()
+           .SetEventTopics(  
+              "Bookstore.Domain.{EventName}",  
+              "Bookstore.Interchange.{EventName}"  
+           )
+           .SetEventListenerGroup("Default")
+           .EnableAutoRegistration();
+});
+
+var app = builder.Build();
+
+// Use OpenDDD Middleware
+app.UseOpenDDD();
+
+app.Run();`;
+
   const domainModelCode = `using OpenDDD.Domain.Model.Base;
 
 namespace Bookstore.Domain.Model
@@ -248,11 +273,11 @@ namespace Bookstore.Application.Listeners.Domain
               <div className="h-3 w-3 rounded-full bg-red-500"></div>
               <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
               <div className="h-3 w-3 rounded-full bg-green-500"></div>
-              <span className="ml-2 opacity-70">Domain Model Example</span>
+              <span className="ml-2 opacity-70">Startup Configuration</span>
             </div>
             <CodeBlock 
-              code={domainModelCode} 
-              title="Order.cs"
+              code={startupCode} 
+              title="Program.cs"
               language="csharp"
             />
           </div>
