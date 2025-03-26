@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -18,7 +19,8 @@ import FeatureCard from '@/components/FeatureCard';
 import FaqAccordion from '@/components/FaqAccordion';
 import Navbar from '@/components/Navbar';
 
-const domainModelCode = `using OpenDDD.Domain.Model.Base;
+const Index = () => {
+  const domainModelCode = `using OpenDDD.Domain.Model.Base;
 
 namespace Bookstore.Domain.Model
 {
