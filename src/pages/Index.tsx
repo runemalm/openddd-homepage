@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -179,7 +180,7 @@ namespace Bookstore.Application.Listeners.Domain
       answer: "OpenDDD is designed with a flexible persistence approach offering two persistence providers: Entity Framework Core and OpenDDD's own persistence provider. It supports multiple database technologies through database providers, with current support for SQLite and PostgreSQL. This design allows for clean separation between your domain model and the underlying database technology."
     },
     {
-      question: "What messaging providers does OpenDDD support?",
+      question: "What messaging technologies does OpenDDD support?",
       answer: "OpenDDD provides built-in support for multiple messaging providers to enable event-driven architecture and integration between services. The framework supports InMemory messaging for development and testing, as well as production-ready options including Kafka, RabbitMQ, and Azure Service Bus. This flexibility allows you to choose the messaging infrastructure that best fits your application's needs and operational environment."
     }
   ];
