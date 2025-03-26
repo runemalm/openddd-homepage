@@ -422,7 +422,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
                 <div className="h-8 w-8 rounded-md bg-white flex items-center justify-center text-foreground font-bold text-xl">
                   O
                 </div>
-                <span className="font-semibold text-xl">OpenDDD</span>
+                <span className="font-semibold text-xl">OpenDDD.NET</span>
               </div>
               <p className="text-sm text-white/70">
                 A modern Domain-Driven Design framework for ASP.NET Core applications.
@@ -463,7 +463,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
           
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-white/70">
-              © {new Date().getFullYear()} OpenDDD. All rights reserved.
+              © {new Date().getFullYear()} OpenDDD.NET. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
@@ -485,4 +485,3 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
 };
 
 export default Index;
-
