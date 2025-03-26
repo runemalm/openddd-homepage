@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -45,6 +46,23 @@ namespace Bookstore.Domain.Model
             var lineItem = LineItem.Create(bookId, price);
             LineItems.Add(lineItem);
         }
+    }
+}`;
+
+  const repositoryInterfaceCode = `using System.Linq.Expressions;
+
+namespace OpenDDD.Domain.Model
+{
+    public interface IRepository<TAggregateRoot, in TId> 
+        where TAggregateRoot : IAggregateRoot<TId>
+        where TId : notnull
+    {
+        Task<TAggregateRoot> GetAsync(TId id, CancellationToken ct);
+        Task<TAggregateRoot?> FindAsync(TId id, CancellationToken ct);
+        Task<IEnumerable<TAggregateRoot>> FindWithAsync(Expression<Func<TAggregateRoot, bool>> filterExpression, CancellationToken ct);
+        Task<IEnumerable<TAggregateRoot>> FindAllAsync(CancellationToken ct);
+        Task SaveAsync(TAggregateRoot aggregateRoot, CancellationToken ct);
+        Task DeleteAsync(TAggregateRoot aggregateRoot, CancellationToken ct);
     }
 }`;
 
@@ -273,17 +291,41 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             </p>
           </div>
           
+          <div className="grid grid-cols-1 gap-10 mb-16">
+            <div className="animate-on-scroll opacity-0">
+              <h3 className="text-xl font-semibold mb-4">Domain Model</h3>
+              <p className="text-foreground/70 mb-4">
+                Build rich domain models with encapsulated business logic using the AggregateRoot pattern.
+              </p>
+              <CodeBlock 
+                code={domainModelCode} 
+                title="Order.cs"
+                language="csharp"
+              />
+            </div>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Repository Pattern</h3>
               <p className="text-foreground/70 mb-4">
-                Implement a clean repository pattern to abstract data access logic from your domain.
+                The repository interface defines a clean contract for data access operations.
               </p>
               <CodeBlock 
-                code={repositoryCode} 
-                title="PostgresOpenDddCustomerRepository.cs"
+                code={repositoryInterfaceCode} 
+                title="IRepository.cs"
                 language="csharp"
               />
+              <div className="mt-6">
+                <p className="text-foreground/70 mb-4">
+                  Implement a specialized PostgreSQL repository to abstract data access logic from your domain.
+                </p>
+                <CodeBlock 
+                  code={repositoryCode} 
+                  title="PostgresOpenDddCustomerRepository.cs"
+                  language="csharp"
+                />
+              </div>
             </div>
             
             <div className="animate-on-scroll opacity-0">
@@ -455,4 +497,3 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
 };
 
 export default Index;
-
