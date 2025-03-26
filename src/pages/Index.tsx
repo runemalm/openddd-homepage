@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -454,7 +455,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
               <ul className="space-y-3">
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="https://github.com/runemalm/OpenDDD.NET/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">License</a></li>
+                <li><a href="https://github.com/runemalm/OpenDDD.NET/blob/master/LICENSE.md" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">License</a></li>
               </ul>
             </div>
           </div>
