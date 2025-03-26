@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Github, Book, ArrowRight } from 'lucide-react';
@@ -15,14 +14,12 @@ const navItems: NavItem[] = [
   { label: 'Examples', href: '#examples' },
   { label: 'FAQ', href: '#faq' },
   { label: 'Documentation', href: '#documentation' },
-  { label: 'Use Cases', href: '#use-cases' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 10) {
@@ -36,7 +33,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menu when clicking a link
   const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
@@ -49,7 +45,6 @@ const Navbar = () => {
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        {/* Logo */}
         <a href="https://www.openddd.net" className="flex items-center space-x-2 shrink-0">
           <div className="h-8 w-8 rounded-md bg-primary flex items-center justify-center text-white font-bold text-xl">
             O
@@ -57,7 +52,6 @@ const Navbar = () => {
           <span className="font-semibold text-xl">OpenDDD.NET</span>
         </a>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <a
@@ -70,7 +64,6 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* CTA Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <a 
             href="https://github.com/runemalm/OpenDDD.NET" 
@@ -87,7 +80,6 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
         <button 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
           className="md:hidden focus:outline-none"
@@ -101,7 +93,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div 
         className={cn(
           "fixed inset-0 top-[65px] bg-white z-40 transition-all duration-300 md:hidden overflow-y-auto",
