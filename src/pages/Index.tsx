@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -20,7 +19,6 @@ import FaqAccordion from '@/components/FaqAccordion';
 import Navbar from '@/components/Navbar';
 
 const Index = () => {
-  // Example code for our code blocks - updating this with the provided example
   const domainModelCode = `using OpenDDD.Domain.Model.Base;
 
 namespace Bookstore.Domain.Model
@@ -100,7 +98,6 @@ namespace Bookstore.Infrastructure.Repositories.OpenDdd.Postgres
     }
 }`;
 
-  // Update the handler code to use actions instead of command handlers
   const handlerCode = `using OpenDDD.Application;
 using OpenDDD.Domain.Model;
 using Bookstore.Domain.Model;
@@ -130,7 +127,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
     }
 }`;
 
-  // FAQ items - update the database question
   const faqItems = [
     {
       question: "What is Domain-Driven Design?",
@@ -153,8 +149,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
       answer: "OpenDDD is designed with a flexible persistence approach offering two persistence providers: Entity Framework Core and OpenDDD's own persistence provider. It supports multiple database technologies through database providers, with current support for SQLite and PostgreSQL. This design allows for clean separation between your domain model and the underlying database technology."
     }
   ];
-  
-  // Animation helpers - to trigger animations as elements scroll into view
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -184,7 +179,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
     <div className="min-h-screen bg-white">
       <Navbar />
       
-      {/* Hero Section */}
       <section className="pt-32 pb-24 relative overflow-hidden">
         <div className="absolute inset-0 dot-pattern opacity-40 z-0"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -226,7 +220,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* Features Section */}
       <section id="features" className="py-20 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
@@ -279,7 +272,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* Examples Section */}
       <section id="examples" className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
@@ -343,7 +335,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* FAQ Section */}
       <section id="faq" className="py-20 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
@@ -361,7 +352,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* Documentation Section */}
       <section id="documentation" className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
@@ -392,8 +382,8 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Configuration</h3>
-              <p className="text-foreground/70 mb-4">Configure OpenDDD for different environments with our flexible configuration system.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
+              <p className="text-foreground/70 mb-4">Configure OpenDDD for different environments with our flexible options.</p>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/configuration.html", "_blank")}>
                 View Configuration <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -401,7 +391,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 z-0"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
@@ -425,7 +414,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
         </div>
       </section>
       
-      {/* Footer */}
       <footer className="bg-foreground text-white py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
