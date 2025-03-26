@@ -72,7 +72,7 @@ const Navbar = () => {
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center space-x-4">
           <a 
-            href="https://github.com" 
+            href="https://github.com/runemalm/OpenDDD.NET" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="inline-flex items-center gap-1.5 text-foreground/80 hover:text-foreground transition-colors"
@@ -80,7 +80,7 @@ const Navbar = () => {
             <Github className="h-5 w-5" />
             <span className="text-sm font-medium">GitHub</span>
           </a>
-          <Button>
+          <Button onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
             Get Started
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
@@ -122,7 +122,7 @@ const Navbar = () => {
           </nav>
           <div className="flex flex-col space-y-4 pt-4 border-t">
             <a 
-              href="https://github.com" 
+              href="https://github.com/runemalm/OpenDDD.NET" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="inline-flex items-center gap-2 text-foreground"
@@ -132,14 +132,16 @@ const Navbar = () => {
               <span className="font-medium">GitHub</span>
             </a>
             <a 
-              href="#documentation" 
+              href="https://docs.openddd.net/en/latest/" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-foreground"
               onClick={handleNavClick}
             >
               <Book className="h-5 w-5" />
               <span className="font-medium">Documentation</span>
             </a>
-            <Button className="w-full justify-center">
+            <Button className="w-full justify-center" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
               Get Started
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>

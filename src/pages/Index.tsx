@@ -8,7 +8,8 @@ import {
   Layers, 
   GitBranch, 
   Zap, 
-  Github 
+  Github,
+  ExternalLink
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -168,7 +169,7 @@ const Index = () => {
               OpenDDD provides a lightweight framework for implementing Domain-Driven Design patterns in your ASP.NET Core applications with clarity and precision.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
-              <Button size="lg" className="px-6">
+              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -322,7 +323,7 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Getting Started</h3>
               <p className="text-foreground/70 mb-4">New to OpenDDD? Start here with our step-by-step guide.</p>
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
                 View Guide <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -330,16 +331,16 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Core Concepts</h3>
               <p className="text-foreground/70 mb-4">Learn about the fundamental principles behind OpenDDD.</p>
-              <Button variant="outline" className="w-full">
-                Explore Concepts <ArrowRight className="ml-2 h-4 w-4" />
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/", "_blank")}>
+                Explore Concepts <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">API Reference</h3>
               <p className="text-foreground/70 mb-4">Detailed documentation of all OpenDDD APIs and abstractions.</p>
-              <Button variant="outline" className="w-full">
-                View API <ArrowRight className="ml-2 h-4 w-4" />
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/api.html", "_blank")}>
+                View API <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -358,11 +359,11 @@ const Index = () => {
               Start building maintainable, domain-focused applications today with OpenDDD.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="px-6">
+              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="px-6">
+              <Button size="lg" variant="outline" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/", "_blank")}>
                 View Documentation
               </Button>
             </div>
