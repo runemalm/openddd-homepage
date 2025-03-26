@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -6,7 +7,7 @@ import {
   Database, 
   Code, 
   Layers, 
-  GitBranch, 
+  MessageSquare, 
   Zap, 
   Github,
   ExternalLink
@@ -235,9 +236,9 @@ const Index = () => {
               delay={400}
             />
             <FeatureCard 
-              icon={GitBranch}
-              title="Extensible Core"
-              description="Built with extensibility in mind, allowing you to customize or replace any component as needed."
+              icon={MessageSquare}
+              title="Flexible Messaging"
+              description="Support for multiple messaging providers including InMemory, Kafka, RabbitMQ and Azure Service Bus."
               delay={500}
             />
             <FeatureCard 
@@ -338,10 +339,10 @@ const Index = () => {
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-2">API Reference</h3>
-              <p className="text-foreground/70 mb-4">Detailed documentation of all OpenDDD APIs and abstractions.</p>
+              <h3 className="text-xl font-semibold mb-2">Configuration</h3>
+              <p className="text-foreground/70 mb-4">Configure OpenDDD for different environments with our flexible configuration system.</p>
               <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
-                View API <ExternalLink className="ml-2 h-4 w-4" />
+                View Configuration <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
           </div>
@@ -444,4 +445,3 @@ const Index = () => {
 };
 
 export default Index;
-
