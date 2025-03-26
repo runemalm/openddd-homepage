@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -19,8 +18,7 @@ import FeatureCard from '@/components/FeatureCard';
 import FaqAccordion from '@/components/FaqAccordion';
 import Navbar from '@/components/Navbar';
 
-const Index = () => {
-  const domainModelCode = `using OpenDDD.Domain.Model.Base;
+const domainModelCode = `using OpenDDD.Domain.Model.Base;
 
 namespace Bookstore.Domain.Model
 {
@@ -325,7 +323,9 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
                 language="csharp"
               />
             </div>
-            
+          </div>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Action Pattern</h3>
               <p className="text-foreground/70 mb-4">
