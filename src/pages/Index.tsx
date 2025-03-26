@@ -312,16 +312,18 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
                 title="IRepository.cs"
                 language="csharp"
               />
-              <div className="mt-6">
-                <p className="text-foreground/70 mb-4">
-                  Create domain services to implement business rules and maintain the integrity of your domain model.
-                </p>
-                <CodeBlock 
-                  code={domainServiceCode} 
-                  title="CustomerDomainService.cs"
-                  language="csharp"
-                />
-              </div>
+            </div>
+
+            <div className="animate-on-scroll opacity-0">
+              <h3 className="text-xl font-semibold mb-4">Domain Services</h3>
+              <p className="text-foreground/70 mb-4">
+                Create domain services to implement business rules and maintain the integrity of your domain model.
+              </p>
+              <CodeBlock 
+                code={domainServiceCode} 
+                title="CustomerDomainService.cs"
+                language="csharp"
+              />
             </div>
             
             <div className="animate-on-scroll opacity-0">
