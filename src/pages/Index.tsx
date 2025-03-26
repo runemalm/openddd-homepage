@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -20,40 +19,32 @@ import FaqAccordion from '@/components/FaqAccordion';
 import Navbar from '@/components/Navbar';
 
 const Index = () => {
-  // Example code for our code blocks
-  const domainModelCode = `public class Order : Aggregate<OrderId>
+  // Example code for our code blocks - updating this with the provided example
+  const domainModelCode = `using OpenDDD.Domain.Model.Base;
+
+namespace Bookstore.Domain.Model
 {
-    public Customer Customer { get; private set; }
-    public List<OrderLine> OrderLines { get; } = new();
-    public OrderStatus Status { get; private set; }
-    public Money TotalAmount => OrderLines.Sum(l => l.LineTotal);
-
-    private Order() { }
-
-    public static Order Create(Customer customer)
+    public class Order : AggregateRootBase<Guid>
     {
-        var order = new Order
+        public Guid CustomerId { get; private set; }
+        public ICollection<LineItem> LineItems { get; private set; }
+
+        private Order(Guid id, Guid customerId) : base(id)
         {
-            Id = OrderId.New(),
-            Customer = customer,
-            Status = OrderStatus.Draft
-        };
-        
-        order.AddDomainEvent(new OrderCreatedEvent(order));
-        return order;
-    }
+            CustomerId = customerId;
+            LineItems = new List<LineItem>();
+        }
 
-    public void AddOrderLine(Product product, int quantity)
-    {
-        var line = new OrderLine(product, quantity);
-        OrderLines.Add(line);
-    }
+        public static Order Create(Guid customerId)
+        {
+            return new Order(Guid.NewGuid(), customerId);
+        }
 
-    public void Submit()
-    {
-        // Business rules and validations...
-        Status = OrderStatus.Submitted;
-        AddDomainEvent(new OrderSubmittedEvent(this));
+        public void AddLineItem(Guid bookId, Money price)
+        {
+            var lineItem = LineItem.Create(bookId, price);
+            LineItems.Add(lineItem);
+        }
     }
 }`;
 
