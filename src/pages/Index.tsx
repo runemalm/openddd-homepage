@@ -177,7 +177,7 @@ namespace Bookstore.Application.Listeners.Domain
     },
     {
       question: "What database technologies does OpenDDD support?",
-      answer: "OpenDDD is designed with a flexible persistence approach offering two persistence providers: Entity Framework Core and OpenDDD's own persistence provider. It supports multiple database technologies through database providers, with current support for SQLite and PostgreSQL. This design allows for clean separation between your domain model and the underlying database technology."
+      answer: "OpenDDD is designed with a flexible persistence approach offering two persistence providers: Entity Framework Core and OpenDDD's own persistence provider. It supports multiple database technologies through database providers, with current support for InMemory, SQLite and PostgreSQL. This design allows for clean separation between your domain model and the underlying database technology."
     },
     {
       question: "What messaging technologies does OpenDDD support?",
