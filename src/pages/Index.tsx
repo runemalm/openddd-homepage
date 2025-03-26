@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -325,7 +324,7 @@ const Index = () => {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Getting Started</h3>
               <p className="text-foreground/70 mb-4">New to OpenDDD? Start here with our step-by-step guide.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
                 View Guide <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -361,7 +360,7 @@ const Index = () => {
               Start building maintainable, domain-focused applications today with OpenDDD.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
+              <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
                 Get Started Now
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -392,18 +391,18 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4">Resources</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Tutorials</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Examples</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">API Reference</a></li>
+                <li><a href="https://docs.openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="https://docs.openddd.net/en/latest/userguide.html" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Tutorials</a></li>
+                <li><a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Examples</a></li>
+                <li><a href="https://docs.openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">API Reference</a></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-semibold mb-4">Community</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Stack Overflow</a></li>
+                <li><a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a></li>
+                <li><a href="https://stackoverflow.com/questions/tagged/openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Stack Overflow</a></li>
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Discord</a></li>
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Twitter</a></li>
               </ul>
@@ -414,7 +413,7 @@ const Index = () => {
               <ul className="space-y-3">
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">License</a></li>
+                <li><a href="https://github.com/runemalm/OpenDDD.NET/blob/master/LICENSE" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">License</a></li>
               </ul>
             </div>
           </div>
@@ -426,7 +425,7 @@ const Index = () => {
               © {new Date().getFullYear()} OpenDDD. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <a href="https://github.com/runemalm/OpenDDD.NET" className="text-white/70 hover:text-white">
+              <a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
                 <span className="sr-only">Github</span>
                 <Github className="h-5 w-5" />
               </a>
