@@ -48,48 +48,67 @@ namespace Bookstore.Domain.Model
     }
 }`;
 
-  const repositoryCode = `public class OrderRepository : Repository<Order, OrderId>
+  const repositoryCode = `using OpenDDD.Infrastructure.Persistence.OpenDdd.DatabaseSession.Postgres;
+using OpenDDD.Infrastructure.Repository.OpenDdd.Postgres;
+using OpenDDD.Infrastructure.Persistence.Serializers;
+using OpenDDD.Domain.Model.Exception;
+using Bookstore.Domain.Model;
+
+namespace Bookstore.Infrastructure.Repositories.OpenDdd.Postgres
 {
-    private readonly ApplicationDbContext _context;
-    
-    public OrderRepository(ApplicationDbContext context)
+    public class PostgresOpenDddCustomerRepository : PostgresOpenDddRepository<Customer, Guid>, ICustomerRepository
     {
-        _context = context;
-    }
-    
-    public async Task<Order> GetByIdAsync(OrderId id)
-    {
-        return await _context.Orders
-            .Include(o => o.Customer)
-            .Include(o => o.OrderLines)
-            .FirstOrDefaultAsync(o => o.Id == id);
-    }
-    
-    public async Task SaveAsync(Order order)
-    {
-        _context.Update(order);
-        await _context.SaveChangesAsync();
+        private readonly ILogger<PostgresOpenDddCustomerRepository> _logger;
+
+        public PostgresOpenDddCustomerRepository(
+            PostgresDatabaseSession session, 
+            IAggregateSerializer serializer, 
+            ILogger<PostgresOpenDddCustomerRepository> logger) 
+            : base(session, serializer)
+        {
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
+        public async Task<Customer> GetByEmailAsync(string email, CancellationToken ct)
+        {
+            var customer = await FindByEmailAsync(email, ct);
+            return customer ?? throw new DomainException($"No customer found with email '{email}'.");
+        }
+
+        public async Task<Customer?> FindByEmailAsync(string email, CancellationToken ct)
+        {
+            return (await FindWithAsync(c => c.Email == email, ct)).FirstOrDefault();
+        }
     }
 }`;
 
   // Update the handler code to use actions instead of command handlers
-  const handlerCode = `public class SubmitOrderAction : IAction<SubmitOrderCommand>
+  const handlerCode = `using OpenDDD.Application;
+using OpenDDD.Domain.Model;
+using Bookstore.Domain.Model;
+using Bookstore.Domain.Service;
+
+namespace Bookstore.Application.Actions.Orders.PlaceOrder
 {
-    private readonly IRepository<Order, OrderId> _orderRepository;
-    
-    public SubmitOrderAction(IRepository<Order, OrderId> orderRepository)
+    public class PlaceOrderAction : IAction<PlaceOrderCommand, Order>
     {
-        _orderRepository = orderRepository;
-    }
-    
-    public async Task ExecuteAsync(SubmitOrderCommand command)
-    {
-        var order = await _orderRepository.GetByIdAsync(command.OrderId);
-        if (order == null)
-            throw new OrderNotFoundException(command.OrderId);
-            
-        order.Submit();
-        await _orderRepository.SaveAsync(order);
+        private readonly IRepository<Order, Guid> _orderRepository;
+        private readonly IOrderDomainService _orderDomainService;
+
+        public PlaceOrderAction(
+            IRepository<Order, Guid> orderRepository,
+            IOrderDomainService orderDomainService)
+        {
+            _orderRepository = orderRepository;
+            _orderDomainService = orderDomainService;
+        }
+
+        public async Task<Order> ExecuteAsync(PlaceOrderCommand command, CancellationToken ct)
+        {
+            var order = await _orderDomainService.PlaceOrderAsync(command.CustomerId, command.BookId, ct);
+            await _orderRepository.SaveAsync(order, ct);
+            return order;
+        }
     }
 }`;
 
@@ -262,7 +281,7 @@ namespace Bookstore.Domain.Model
               </p>
               <CodeBlock 
                 code={repositoryCode} 
-                title="OrderRepository.cs"
+                title="PostgresOpenDddCustomerRepository.cs"
                 language="csharp"
               />
             </div>
@@ -274,7 +293,7 @@ namespace Bookstore.Domain.Model
               </p>
               <CodeBlock 
                 code={handlerCode} 
-                title="SubmitOrderAction.cs"
+                title="PlaceOrderAction.cs"
                 language="csharp"
               />
             </div>
@@ -436,3 +455,4 @@ namespace Bookstore.Domain.Model
 };
 
 export default Index;
+
