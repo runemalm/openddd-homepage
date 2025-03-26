@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -127,6 +126,33 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             var order = await _orderDomainService.PlaceOrderAsync(command.CustomerId, command.BookId, ct);
             await _orderRepository.SaveAsync(order, ct);
             return order;
+        }
+    }
+}`;
+
+  const eventListenerCode = `using OpenDDD.Infrastructure.Events.Base;
+using OpenDDD.Infrastructure.Events;
+using OpenDDD.API.Options;
+using OpenDDD.API.HostedServices;
+using Bookstore.Application.Actions.SendWelcomeEmail;
+using Bookstore.Domain.Model.Events;
+
+namespace Bookstore.Application.Listeners.Domain
+{
+    public class CustomerRegisteredListener : EventListenerBase<CustomerRegistered, SendWelcomeEmailAction>
+    {
+        public CustomerRegisteredListener(
+            IMessagingProvider messagingProvider,
+            OpenDddOptions options,
+            IServiceScopeFactory serviceScopeFactory,
+            StartupHostedService startupService,
+            ILogger<CustomerRegisteredListener> logger)
+            : base(messagingProvider, options, serviceScopeFactory, startupService, logger) { }
+
+        public override async Task HandleAsync(CustomerRegistered domainEvent, SendWelcomeEmailAction action, CancellationToken ct)
+        {
+            var command = new SendWelcomeEmailCommand(domainEvent.Email, domainEvent.Name);
+            await action.ExecuteAsync(command, ct);
         }
     }
 }`;
@@ -340,6 +366,20 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
               />
             </div>
           </div>
+
+          <div className="grid grid-cols-1 mb-16">
+            <div className="animate-on-scroll opacity-0">
+              <h3 className="text-xl font-semibold mb-4">Event Listeners</h3>
+              <p className="text-foreground/70 mb-4">
+                Implement event listeners to react to domain events and perform side effects, like sending emails when a customer registers.
+              </p>
+              <CodeBlock 
+                code={eventListenerCode} 
+                title="CustomerRegisteredListener.cs"
+                language="csharp"
+              />
+            </div>
+          </div>
         </div>
       </section>
       
@@ -492,3 +532,4 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
 };
 
 export default Index;
+
