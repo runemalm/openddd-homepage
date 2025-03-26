@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -314,27 +315,27 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             </div>
 
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Domain Services</h3>
+              <h3 className="text-xl font-semibold mb-4">Command Pattern</h3>
               <p className="text-foreground/70 mb-4">
-                Create domain services to implement business rules and maintain the integrity of your domain model.
+                Implement the Command pattern to create focused, single-responsibility actions that compose your application services.
               </p>
               <CodeBlock 
-                code={domainServiceCode} 
-                title="CustomerDomainService.cs"
+                code={handlerCode} 
+                title="PlaceOrderAction.cs"
                 language="csharp"
               />
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-10">
+          <div className="grid grid-cols-1 mb-16">
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Action Pattern</h3>
+              <h3 className="text-xl font-semibold mb-4">Domain Services</h3>
               <p className="text-foreground/70 mb-4">
-                Keep your application services clean and focused with dedicated actions.
+                Create domain services to implement complex business rules that span multiple aggregates and maintain the integrity of your domain model.
               </p>
               <CodeBlock 
-                code={handlerCode} 
-                title="PlaceOrderAction.cs"
+                code={domainServiceCode} 
+                title="CustomerDomainService.cs"
                 language="csharp"
               />
             </div>
