@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -173,7 +172,7 @@ const Index = () => {
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button size="lg" variant="outline" className="px-6">
+              <Button size="lg" variant="outline" className="px-6" onClick={() => window.open("https://github.com/runemalm/OpenDDD.NET", "_blank")}>
                 <Github className="mr-2 h-4 w-4" />
                 View on GitHub
               </Button>
@@ -424,7 +423,7 @@ const Index = () => {
               © {new Date().getFullYear()} OpenDDD. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
-              <a href="#" className="text-white/70 hover:text-white">
+              <a href="https://github.com/runemalm/OpenDDD.NET" className="text-white/70 hover:text-white">
                 <span className="sr-only">Github</span>
                 <Github className="h-5 w-5" />
               </a>
@@ -443,3 +442,4 @@ const Index = () => {
 };
 
 export default Index;
+
