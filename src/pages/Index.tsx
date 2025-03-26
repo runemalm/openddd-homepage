@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -374,16 +373,16 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-2">Building Blocks</h3>
-              <p className="text-foreground/70 mb-4">Learn about the fundamental building blocks behind OpenDDD.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/building-blocks.html", "_blank")}>
-                Explore Building Blocks <ExternalLink className="ml-2 h-4 w-4" />
+              <h3 className="text-xl font-semibold mb-2">Sample Project</h3>
+              <p className="text-foreground/70 mb-4">See OpenDDD in action with a complete working example.</p>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html#run-sample-project", "_blank")}>
+                Explore Sample <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
               <h3 className="text-xl font-semibold mb-2">Configuration</h3>
-              <p className="text-foreground/70 mb-4">Configure OpenDDD for different environments with our flexible options.</p>
+              <p className="text-foreground/70 mb-4">Learn how to configure OpenDDD for your project needs.</p>
               <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/configuration.html", "_blank")}>
                 View Configuration <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
@@ -486,3 +485,4 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
 };
 
 export default Index;
+
