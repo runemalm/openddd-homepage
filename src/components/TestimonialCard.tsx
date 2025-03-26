@@ -1,23 +1,23 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Star } from 'lucide-react';
+import { Star, Users, User, Lightbulb } from 'lucide-react';
 
 interface TestimonialCardProps {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
+  title: string;
+  description: string;
+  icon?: React.ElementType;
+  scenario?: string;
   rating?: number;
   className?: string;
 }
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
-  quote,
-  author,
-  role,
-  company,
-  rating = 5,
+  title,
+  description,
+  icon: Icon = Lightbulb,
+  scenario,
+  rating = 0,
   className,
 }) => {
   return (
@@ -25,6 +25,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       "flex flex-col p-6 rounded-xl border border-border bg-white shadow-sm",
       className
     )}>
+      <div className="flex items-center mb-4">
+        <div className="bg-primary/10 p-2 rounded-full mr-3">
+          <Icon className="h-5 w-5 text-primary" />
+        </div>
+        <h3 className="font-semibold text-lg">{title}</h3>
+      </div>
+      
       {rating > 0 && (
         <div className="flex mb-4">
           {Array.from({ length: rating }).map((_, i) => (
@@ -33,12 +40,13 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         </div>
       )}
       
-      <blockquote className="text-foreground/90 mb-4 italic">"{quote}"</blockquote>
+      <p className="text-foreground/90 mb-4">{description}</p>
       
-      <div className="mt-auto">
-        <p className="font-semibold">{author}</p>
-        <p className="text-sm text-foreground/70">{role}, {company}</p>
-      </div>
+      {scenario && (
+        <div className="mt-auto pt-4 border-t border-border">
+          <p className="text-sm text-foreground/70 italic">{scenario}</p>
+        </div>
+      )}
     </div>
   );
 };

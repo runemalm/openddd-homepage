@@ -11,7 +11,10 @@ import {
   Github,
   ExternalLink,
   User,
-  Users
+  Users,
+  Briefcase,
+  Building,
+  BookOpen
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -211,6 +214,27 @@ namespace Bookstore.Application.Listeners.Domain
     }
   ];
 
+  const useCases = [
+    {
+      title: "Enterprise Applications",
+      description: "Build scalable enterprise applications with clear separation of concerns and a focus on your core business domain.",
+      icon: Building,
+      scenario: "Perfect for complex business systems requiring a clean domain model and maintainable architecture."
+    },
+    {
+      title: "Microservices",
+      description: "Design bounded contexts as microservices with well-defined interfaces and messaging for communication.",
+      icon: Package,
+      scenario: "Ideal for distributed systems that need autonomy between services while maintaining business consistency."
+    },
+    {
+      title: "Domain-Rich Applications",
+      description: "Implement complex business rules with rich domain models and encapsulated behavior.",
+      icon: BookOpen,
+      scenario: "Suited for applications with intricate business logic that benefits from an explicit domain model."
+    }
+  ];
+
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -329,6 +353,31 @@ namespace Bookstore.Application.Listeners.Domain
               description="Designed with performance in mind, with minimal overhead and efficient implementations."
               delay={600}
             />
+          </div>
+        </div>
+      </section>
+      
+      <section id="use-cases" className="py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Ideal Use Cases
+            </h2>
+            <p className="text-lg text-foreground/70">
+              OpenDDD is designed to excel in these common scenarios.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll opacity-0">
+            {useCases.map((useCase, index) => (
+              <TestimonialCard
+                key={index}
+                title={useCase.title}
+                description={useCase.description}
+                icon={useCase.icon}
+                scenario={useCase.scenario}
+              />
+            ))}
           </div>
         </div>
       </section>
