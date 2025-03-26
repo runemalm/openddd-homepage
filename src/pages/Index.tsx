@@ -364,7 +364,7 @@ namespace Bookstore.Application.Listeners.Domain
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Command Pattern</h3>
               <p className="text-foreground/70 mb-4">
-                Implement the Command pattern to create focused, single-responsibility actions that compose your application services.
+                Create focused, single-responsibility commands that orchestrate domain operations, promoting maintainability and testability through clear separation of concerns.
               </p>
               <CodeBlock 
                 code={handlerCode} 
@@ -563,4 +563,6 @@ namespace Bookstore.Application.Listeners.Domain
 };
 
 export default Index;
+
+
 
