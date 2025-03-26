@@ -421,7 +421,7 @@ namespace Bookstore.Application.Listeners.Domain
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-foreground/70">
-              Get answers to common questions about OpenDDD and Domain-Driven Design.
+              Get answers to common questions about OpenDDD.NET and Domain-Driven Design.
             </p>
           </div>
           
@@ -563,6 +563,3 @@ namespace Bookstore.Application.Listeners.Domain
 };
 
 export default Index;
-
-
-
