@@ -381,7 +381,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-2">Configuration</h3>
+              <h3 className="text-xl font-semibold mb-2">Configuration Guide</h3>
               <p className="text-foreground/70 mb-4">Learn how to configure OpenDDD for your project needs.</p>
               <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/configuration.html", "_blank")}>
                 View Configuration <ExternalLink className="ml-2 h-4 w-4" />
@@ -434,8 +434,8 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
               <ul className="space-y-3">
                 <li><a href="https://docs.openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="https://docs.openddd.net/en/latest/userguide.html" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Tutorials</a></li>
-                <li><a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Examples</a></li>
-                <li><a href="https://docs.openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">API Reference</a></li>
+                <li><a href="https://docs.openddd.net/en/latest/userguide.html#run-sample-project" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Examples</a></li>
+                <li><a href="https://docs.openddd.net/en/latest/configuration.html" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Configuration Guide</a></li>
               </ul>
             </div>
             
