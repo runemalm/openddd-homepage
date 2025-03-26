@@ -190,30 +190,6 @@ namespace Bookstore.Application.Listeners.Domain
     }
   ];
 
-  const testimonials = [
-    {
-      quote: "OpenDDD has transformed how we build our ASP.NET Core applications. The clean architecture patterns made our codebase more maintainable and testable.",
-      author: "Sarah Johnson",
-      role: "Lead Developer",
-      company: "FinTech Solutions",
-      rating: 5
-    },
-    {
-      quote: "As a team lead, I appreciate how OpenDDD enforces best practices and keeps our domain logic clean. Onboarding new developers has become much easier.",
-      author: "Michael Chen",
-      role: "Engineering Manager",
-      company: "Health Systems Inc.",
-      rating: 5
-    },
-    {
-      quote: "The flexibility of OpenDDD allowed us to gradually adopt DDD practices in our legacy application. We started with one bounded context and expanded from there.",
-      author: "Emma Rodriguez",
-      role: "Senior Software Architect",
-      company: "Retail Connect",
-      rating: 4
-    }
-  ];
-
   const useCases = [
     {
       title: "Enterprise Applications",
@@ -376,32 +352,6 @@ namespace Bookstore.Application.Listeners.Domain
                 description={useCase.description}
                 icon={useCase.icon}
                 scenario={useCase.scenario}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-      
-      <section id="testimonials" className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              What Our Users Say
-            </h2>
-            <p className="text-lg text-foreground/70">
-              Hear from developers who have built applications with OpenDDD.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll opacity-0">
-            {testimonials.map((testimonial, index) => (
-              <TestimonialCard
-                key={index}
-                quote={testimonial.quote}
-                author={testimonial.author}
-                role={testimonial.role}
-                company={testimonial.company}
-                rating={testimonial.rating}
               />
             ))}
           </div>
