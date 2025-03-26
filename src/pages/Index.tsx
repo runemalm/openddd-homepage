@@ -330,10 +330,10 @@ const Index = () => {
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border border-border">
-              <h3 className="text-xl font-semibold mb-2">Core Concepts</h3>
-              <p className="text-foreground/70 mb-4">Learn about the fundamental principles behind OpenDDD.</p>
-              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
-                Explore Concepts <ExternalLink className="ml-2 h-4 w-4" />
+              <h3 className="text-xl font-semibold mb-2">Building Blocks</h3>
+              <p className="text-foreground/70 mb-4">Learn about the fundamental building blocks behind OpenDDD.</p>
+              <Button variant="outline" className="w-full" onClick={() => window.open("https://docs.openddd.net/en/latest/building-blocks.html", "_blank")}>
+                Explore Building Blocks <ExternalLink className="ml-2 h-4 w-4" />
               </Button>
             </div>
             
@@ -444,3 +444,4 @@ const Index = () => {
 };
 
 export default Index;
+
