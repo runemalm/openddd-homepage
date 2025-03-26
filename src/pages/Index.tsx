@@ -435,7 +435,6 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
                 <li><a href="https://docs.openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Documentation</a></li>
                 <li><a href="https://docs.openddd.net/en/latest/userguide.html" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Tutorials</a></li>
                 <li><a href="https://docs.openddd.net/en/latest/userguide.html#run-sample-project" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Examples</a></li>
-                <li><a href="https://docs.openddd.net/en/latest/configuration.html" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Configuration Guide</a></li>
               </ul>
             </div>
             
@@ -463,7 +462,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
           
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-white/70">
-              © {new Date().getFullYear()} OpenDDD.NET. All rights reserved.
+              © {new Date().getFullYear()} David Runemalm. All rights reserved.
             </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white">
