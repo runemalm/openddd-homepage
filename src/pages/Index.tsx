@@ -443,17 +443,17 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
               <h3 className="font-semibold mb-4">Community</h3>
               <ul className="space-y-3">
                 <li><a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a></li>
-                <li><a href="https://stackoverflow.com/questions/tagged/openddd.net" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Stack Overflow</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Discord</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Twitter</a></li>
+                <li><span className="text-sm text-white/50 cursor-not-allowed">Stack Overflow</span></li>
+                <li><span className="text-sm text-white/50 cursor-not-allowed">Discord</span></li>
+                <li><span className="text-sm text-white/50 cursor-not-allowed">Twitter</span></li>
               </ul>
             </div>
             
             <div>
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-3">
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-sm text-white/70 hover:text-white transition-colors">Terms of Service</a></li>
+                <li><span className="text-sm text-white/50 cursor-not-allowed">Privacy Policy</span></li>
+                <li><span className="text-sm text-white/50 cursor-not-allowed">Terms of Service</span></li>
                 <li><a href="https://github.com/runemalm/OpenDDD.NET/blob/master/LICENSE.md" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">License</a></li>
               </ul>
             </div>
@@ -470,12 +470,12 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
                 <span className="sr-only">Github</span>
                 <Github className="h-5 w-5" />
               </a>
-              <a href="#" className="text-white/70 hover:text-white">
+              <span className="text-white/50 cursor-not-allowed">
                 <span className="sr-only">Twitter</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-1-4.8 4-7.6 7.9-4.9 1.1-.8 2.1-.8 2.1-.8z" />
                 </svg>
-              </a>
+              </span>
             </div>
           </div>
         </div>
