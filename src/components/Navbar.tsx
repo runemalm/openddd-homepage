@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, Github, Book, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 interface NavItem {
   label: string;
@@ -18,7 +20,7 @@ const navItems: NavItem[] = [
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,8 +35,16 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = () => {
-    setMobileMenuOpen(false);
+  const handleNavClick = (href: string) => {
+    setIsSheetOpen(false);
+    
+    // Add a small delay to allow the sheet to close before scrolling
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
 
   return (
@@ -80,64 +90,59 @@ const Navbar = () => {
           </Button>
         </div>
 
-        <button 
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)} 
-          className="md:hidden focus:outline-none"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
-        </button>
-      </div>
-
-      <div 
-        className={cn(
-          "fixed inset-0 top-[65px] bg-white z-40 transition-all duration-300 md:hidden overflow-y-auto",
-          mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        )}
-      >
-        <div className="container mx-auto px-4 py-8 flex flex-col space-y-8">
-          <nav className="flex flex-col space-y-6">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-lg font-medium text-foreground"
-                onClick={handleNavClick}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-          <div className="flex flex-col space-y-4 pt-4 border-t">
-            <a 
-              href="https://github.com/runemalm/OpenDDD.NET" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center gap-2 text-foreground"
-              onClick={handleNavClick}
-            >
-              <Github className="h-5 w-5" />
-              <span className="font-medium">GitHub</span>
-            </a>
-            <a 
-              href="https://docs.openddd.net" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-foreground"
-              onClick={handleNavClick}
-            >
-              <Book className="h-5 w-5" />
-              <span className="font-medium">Documentation</span>
-            </a>
-            <Button className="w-full justify-center" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
-              Get Started
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
+        {/* Mobile Menu: Using Sheet component from shadcn/ui for better mobile experience */}
+        <div className="md:hidden">
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden focus:outline-none">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[80%] sm:w-[350px] pt-12">
+              <div className="flex flex-col space-y-6">
+                <nav className="flex flex-col space-y-6">
+                  {navItems.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="text-lg font-medium text-foreground hover:text-primary transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleNavClick(item.href);
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+                <div className="flex flex-col space-y-4 pt-4 border-t">
+                  <a 
+                    href="https://github.com/runemalm/OpenDDD.NET" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center gap-2 text-foreground hover:text-primary"
+                  >
+                    <Github className="h-5 w-5" />
+                    <span className="font-medium">GitHub</span>
+                  </a>
+                  <a 
+                    href="https://docs.openddd.net" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-foreground hover:text-primary"
+                  >
+                    <Book className="h-5 w-5" />
+                    <span className="font-medium">Documentation</span>
+                  </a>
+                  <Button className="w-full justify-center mt-2" onClick={() => window.open("https://docs.openddd.net", "_blank")}>
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
