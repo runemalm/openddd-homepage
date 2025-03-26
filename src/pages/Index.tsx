@@ -253,7 +253,7 @@ namespace Bookstore.Application.Listeners.Domain
               Build Elegant, Domain-Focused Applications
             </h1>
             <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
-              OpenDDD provides a lightweight framework for implementing Domain-Driven Design patterns in your ASP.NET Core applications with clarity and precision.
+              OpenDDD.NET provides a lightweight framework for implementing Domain-Driven Design patterns in your ASP.NET Core applications with clarity and precision.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
               <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
@@ -287,7 +287,7 @@ namespace Bookstore.Application.Listeners.Domain
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose OpenDDD?
+              Why Choose OpenDDD.NET?
             </h2>
             <p className="text-lg text-foreground/70">
               Our framework embraces modern .NET patterns while staying true to Domain-Driven Design principles.
@@ -342,7 +342,7 @@ namespace Bookstore.Application.Listeners.Domain
               See OpenDDD in Action
             </h2>
             <p className="text-lg text-foreground/70">
-              Explore examples of how OpenDDD helps you implement clean, maintainable DDD patterns.
+              Explore examples of how OpenDDD.NET helps you implement clean, maintainable DDD patterns.
             </p>
           </div>
           
@@ -478,7 +478,7 @@ namespace Bookstore.Application.Listeners.Domain
               Ready to Build Better Software?
             </h2>
             <p className="text-lg text-foreground/70 mb-8">
-              Start building maintainable, domain-focused applications today with OpenDDD.
+              Start building maintainable, domain-focused applications today with OpenDDD.NET.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Button size="lg" className="px-6" onClick={() => window.open("https://docs.openddd.net/en/latest/userguide.html", "_blank")}>
