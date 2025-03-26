@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -301,7 +300,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             </div>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Repository Pattern</h3>
               <p className="text-foreground/70 mb-4">
