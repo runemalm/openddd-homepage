@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -64,36 +65,39 @@ namespace OpenDDD.Domain.Model
     }
 }`;
 
-  const repositoryCode = `using OpenDDD.Infrastructure.Persistence.OpenDdd.DatabaseSession.Postgres;
-using OpenDDD.Infrastructure.Repository.OpenDdd.Postgres;
-using OpenDDD.Infrastructure.Persistence.Serializers;
+  const domainServiceCode = `using OpenDDD.Domain.Model;
 using OpenDDD.Domain.Model.Exception;
 using Bookstore.Domain.Model;
+using Bookstore.Domain.Model.Events;
 
-namespace Bookstore.Infrastructure.Repositories.OpenDdd.Postgres
+namespace Bookstore.Domain.Service
 {
-    public class PostgresOpenDddCustomerRepository : PostgresOpenDddRepository<Customer, Guid>, ICustomerRepository
+    public class CustomerDomainService : ICustomerDomainService
     {
-        private readonly ILogger<PostgresOpenDddCustomerRepository> _logger;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly IDomainPublisher _domainPublisher;
 
-        public PostgresOpenDddCustomerRepository(
-            PostgresDatabaseSession session, 
-            IAggregateSerializer serializer, 
-            ILogger<PostgresOpenDddCustomerRepository> logger) 
-            : base(session, serializer)
+        public CustomerDomainService(ICustomerRepository customerRepository, IDomainPublisher domainPublisher)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _customerRepository = customerRepository;
+            _domainPublisher = domainPublisher;
         }
 
-        public async Task<Customer> GetByEmailAsync(string email, CancellationToken ct)
+        public async Task<Customer> RegisterAsync(string name, string email, CancellationToken ct)
         {
-            var customer = await FindByEmailAsync(email, ct);
-            return customer ?? throw new DomainException($"No customer found with email '{email}'.");
-        }
+            var existingCustomer = await _customerRepository.FindByEmailAsync(email, ct);
 
-        public async Task<Customer?> FindByEmailAsync(string email, CancellationToken ct)
-        {
-            return (await FindWithAsync(c => c.Email == email, ct)).FirstOrDefault();
+            if (existingCustomer != null)
+                throw new EntityExistsException("Customer", $"email '{email}'");
+
+            var newCustomer = Customer.Create(name, email);
+
+            await _customerRepository.SaveAsync(newCustomer, ct);
+
+            var domainEvent = new CustomerRegistered(newCustomer.Id, newCustomer.Name, newCustomer.Email, DateTime.UtcNow);
+            await _domainPublisher.PublishAsync(domainEvent, ct);
+
+            return newCustomer;
         }
     }
 }`;
@@ -310,11 +314,11 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
               />
               <div className="mt-6">
                 <p className="text-foreground/70 mb-4">
-                  Implement a specialized PostgreSQL repository to abstract data access logic from your domain.
+                  Create domain services to implement business rules and maintain the integrity of your domain model.
                 </p>
                 <CodeBlock 
-                  code={repositoryCode} 
-                  title="PostgresOpenDddCustomerRepository.cs"
+                  code={domainServiceCode} 
+                  title="CustomerDomainService.cs"
                   language="csharp"
                 />
               </div>
