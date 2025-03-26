@@ -247,7 +247,7 @@ namespace Bookstore.Application.Actions.Orders.PlaceOrder
             <FeatureCard 
               icon={Database}
               title="Flexible Persistence"
-              description="Works with any data storage solution while maintaining a clear separation between domain and data access logic."
+              description="Supports multiple database technologies including PostgreSQL, SQLite, and InMemory, with a clean separation between domain and persistence concerns."
               delay={300}
             />
             <FeatureCard 
