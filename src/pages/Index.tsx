@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -351,7 +350,7 @@ namespace Bookstore.Application.Listeners.Domain
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Domain Model</h3>
               <p className="text-foreground/70 mb-4">
-                Build rich domain models with encapsulated business logic using the AggregateRoot pattern.
+                Build rich domain models with encapsulated business logic using the Aggregate tactical design pattern.
               </p>
               <CodeBlock 
                 code={domainModelCode} 
@@ -564,3 +563,4 @@ namespace Bookstore.Application.Listeners.Domain
 };
 
 export default Index;
+
