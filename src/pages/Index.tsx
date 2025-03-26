@@ -329,18 +329,6 @@ namespace Bookstore.Application.Listeners.Domain
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Repository Pattern</h3>
-              <p className="text-foreground/70 mb-4">
-                The repository interface defines a clean contract for data access operations.
-              </p>
-              <CodeBlock 
-                code={repositoryInterfaceCode} 
-                title="IRepository.cs"
-                language="csharp"
-              />
-            </div>
-
-            <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Command Pattern</h3>
               <p className="text-foreground/70 mb-4">
                 Implement the Command pattern to create focused, single-responsibility actions that compose your application services.
@@ -348,6 +336,18 @@ namespace Bookstore.Application.Listeners.Domain
               <CodeBlock 
                 code={handlerCode} 
                 title="PlaceOrderAction.cs"
+                language="csharp"
+              />
+            </div>
+
+            <div className="animate-on-scroll opacity-0">
+              <h3 className="text-xl font-semibold mb-4">Event Listeners</h3>
+              <p className="text-foreground/70 mb-4">
+                Implement event listeners to react to domain events and perform side effects, like sending emails when a customer registers.
+              </p>
+              <CodeBlock 
+                code={eventListenerCode} 
+                title="CustomerRegisteredListener.cs"
                 language="csharp"
               />
             </div>
@@ -367,13 +367,13 @@ namespace Bookstore.Application.Listeners.Domain
             </div>
 
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Event Listeners</h3>
+              <h3 className="text-xl font-semibold mb-4">Repository Pattern</h3>
               <p className="text-foreground/70 mb-4">
-                Implement event listeners to react to domain events and perform side effects, like sending emails when a customer registers.
+                The repository interface defines a clean contract for data access operations.
               </p>
               <CodeBlock 
-                code={eventListenerCode} 
-                title="CustomerRegisteredListener.cs"
+                code={repositoryInterfaceCode} 
+                title="IRepository.cs"
                 language="csharp"
               />
             </div>
