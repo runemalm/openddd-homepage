@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -499,7 +498,7 @@ namespace Bookstore.Application.Listeners.Domain
               <ul className="space-y-3">
                 <li><a href="https://github.com/runemalm/OpenDDD.NET" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">GitHub</a></li>
                 <li><span className="text-sm text-white/50 cursor-not-allowed">Stack Overflow</span></li>
-                <li><span className="text-sm text-white/50 cursor-not-allowed">Discord</span></li>
+                <li><a href="https://github.com/runemalm/OpenDDD.NET/discussions" target="_blank" rel="noopener noreferrer" className="text-sm text-white/70 hover:text-white transition-colors">Discussions</a></li>
                 <li><span className="text-sm text-white/50 cursor-not-allowed">Twitter</span></li>
               </ul>
             </div>
