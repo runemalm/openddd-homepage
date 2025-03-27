@@ -332,7 +332,7 @@ namespace Bookstore.Application.Listeners.Domain
         </div>
       </section>
       
-      <section id="faq" className="py-20">
+      <section id="faq" className="py-20 bg-secondary/50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -349,7 +349,7 @@ namespace Bookstore.Application.Listeners.Domain
         </div>
       </section>
       
-      <section id="documentation" className="py-20 bg-secondary/50">
+      <section id="documentation" className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-3xl mx-auto text-center mb-16 animate-on-scroll opacity-0">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -388,7 +388,7 @@ namespace Bookstore.Application.Listeners.Domain
         </div>
       </section>
       
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden bg-secondary/50">
         <div className="absolute inset-0 bg-primary/5 z-0"></div>
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center animate-on-scroll opacity-0">
