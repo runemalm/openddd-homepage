@@ -52,109 +52,53 @@ app.Run();`;
 
 namespace Bookstore.Domain.Model
 {
-    public class Order : AggregateRootBase<Guid>
+    public class Customer : AggregateRootBase<Guid>
     {
-        public Guid CustomerId { get; private set; }
-        public ICollection<LineItem> LineItems { get; private set; }
+        public string Name { get; private set; }
+        public string Email { get; private set; }
 
-        private Order(Guid id, Guid customerId) : base(id)
+        private Customer(Guid id, string name, string email) : base(id)
         {
-            CustomerId = customerId;
-            LineItems = new List<LineItem>();
+            Name = name;
+            Email = email;
         }
 
-        public static Order Create(Guid customerId)
+        public static Customer Create(string name, string email)
         {
-            return new Order(Guid.NewGuid(), customerId);
+            return new Customer(Guid.NewGuid(), name, email);
         }
 
-        public void AddLineItem(Guid bookId, Money price)
+        public void ChangeName(string name)
         {
-            var lineItem = LineItem.Create(bookId, price);
-            LineItems.Add(lineItem);
-        }
-    }
-}`;
-
-  const repositoryInterfaceCode = `using System.Linq.Expressions;
-
-namespace OpenDDD.Domain.Model
-{
-    public interface IRepository<TAggregateRoot, in TId> 
-        where TAggregateRoot : IAggregateRoot<TId>
-        where TId : notnull
-    {
-        Task<TAggregateRoot> GetAsync(TId id, CancellationToken ct);
-        Task<TAggregateRoot?> FindAsync(TId id, CancellationToken ct);
-        Task<IEnumerable<TAggregateRoot>> FindWithAsync(Expression<Func<TAggregateRoot, bool>> filterExpression, CancellationToken ct);
-        Task<IEnumerable<TAggregateRoot>> FindAllAsync(CancellationToken ct);
-        Task SaveAsync(TAggregateRoot aggregateRoot, CancellationToken ct);
-        Task DeleteAsync(TAggregateRoot aggregateRoot, CancellationToken ct);
-    }
-}`;
-
-  const domainServiceCode = `using OpenDDD.Domain.Model;
-using OpenDDD.Domain.Model.Exception;
-using Bookstore.Domain.Model;
-using Bookstore.Domain.Model.Events;
-
-namespace Bookstore.Domain.Service
-{
-    public class CustomerDomainService : ICustomerDomainService
-    {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly IDomainPublisher _domainPublisher;
-
-        public CustomerDomainService(ICustomerRepository customerRepository, IDomainPublisher domainPublisher)
-        {
-            _customerRepository = customerRepository;
-            _domainPublisher = domainPublisher;
-        }
-
-        public async Task<Customer> RegisterAsync(string name, string email, CancellationToken ct)
-        {
-            var existingCustomer = await _customerRepository.FindByEmailAsync(email, ct);
-
-            if (existingCustomer != null)
-                throw new EntityExistsException("Customer", $"email '{email}'");
-
-            var newCustomer = Customer.Create(name, email);
-
-            await _customerRepository.SaveAsync(newCustomer, ct);
-
-            var domainEvent = new CustomerRegistered(newCustomer.Id, newCustomer.Name, newCustomer.Email, DateTime.UtcNow);
-            await _domainPublisher.PublishAsync(domainEvent, ct);
-
-            return newCustomer;
+            Name = name;
         }
     }
 }`;
 
   const handlerCode = `using OpenDDD.Application;
-using OpenDDD.Domain.Model;
 using Bookstore.Domain.Model;
 using Bookstore.Domain.Service;
 
-namespace Bookstore.Application.Actions.Orders.PlaceOrder
+namespace Bookstore.Application.Actions.RegisterCustomer
 {
-    public class PlaceOrderAction : IAction<PlaceOrderCommand, Order>
+    public class RegisterCustomerAction : IAction<RegisterCustomerCommand, Customer>
     {
-        private readonly IRepository<Order, Guid> _orderRepository;
-        private readonly IOrderDomainService _orderDomainService;
+        private readonly ICustomerDomainService _customerDomainService;
+        private readonly ICustomerRepository _customerRepository;
 
-        public PlaceOrderAction(
-            IRepository<Order, Guid> orderRepository,
-            IOrderDomainService orderDomainService)
+        public RegisterCustomerAction(
+            ICustomerDomainService customerDomainService,
+            ICustomerRepository customerRepository)
         {
-            _orderRepository = orderRepository;
-            _orderDomainService = orderDomainService;
+            _customerDomainService = customerDomainService;
+            _customerRepository = customerRepository;
         }
 
-        public async Task<Order> ExecuteAsync(PlaceOrderCommand command, CancellationToken ct)
+        public async Task<Customer> ExecuteAsync(RegisterCustomerCommand command, CancellationToken ct)
         {
-            var order = await _orderDomainService.PlaceOrderAsync(command.CustomerId, command.BookId, ct);
-            await _orderRepository.SaveAsync(order, ct);
-            return order;
+            var customer = await _customerDomainService.RegisterAsync(command.Name, command.Email, ct);
+            await _customerRepository.SaveAsync(customer, ct);
+            return customer;
         }
     }
 }`;
@@ -350,11 +294,11 @@ namespace Bookstore.Application.Listeners.Domain
             <div className="animate-on-scroll opacity-0">
               <h3 className="text-xl font-semibold mb-4">Domain Model</h3>
               <p className="text-foreground/70 mb-4">
-                Build rich domain models with encapsulated business logic using the Aggregate tactical design pattern.
+                Build rich domain models with encapsulated business logic using Aggregates.
               </p>
               <CodeBlock 
                 code={domainModelCode} 
-                title="Order.cs"
+                title="Customer.cs"
                 language="csharp"
               />
             </div>
@@ -362,51 +306,25 @@ namespace Bookstore.Application.Listeners.Domain
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Command Pattern</h3>
+              <h3 className="text-xl font-semibold mb-4">Actions</h3>
               <p className="text-foreground/70 mb-4">
                 Create focused, single-responsibility commands that orchestrate domain operations, promoting maintainability and testability through clear separation of concerns.
               </p>
               <CodeBlock 
                 code={handlerCode} 
-                title="PlaceOrderAction.cs"
+                title="RegisterCustomerAction.cs"
                 language="csharp"
               />
             </div>
 
             <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Event Listeners</h3>
+              <h3 className="text-xl font-semibold mb-4">Listeners</h3>
               <p className="text-foreground/70 mb-4">
                 Implement event listeners to react to domain events and perform side effects, like sending emails when a customer registers.
               </p>
               <CodeBlock 
                 code={eventListenerCode} 
                 title="CustomerRegisteredListener.cs"
-                language="csharp"
-              />
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
-            <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Domain Services</h3>
-              <p className="text-foreground/70 mb-4">
-                Create domain services to implement complex business rules that span multiple aggregates and maintain the integrity of your domain model.
-              </p>
-              <CodeBlock 
-                code={domainServiceCode} 
-                title="CustomerDomainService.cs"
-                language="csharp"
-              />
-            </div>
-
-            <div className="animate-on-scroll opacity-0">
-              <h3 className="text-xl font-semibold mb-4">Repository Pattern</h3>
-              <p className="text-foreground/70 mb-4">
-                The repository interface defines a clean contract for data access operations.
-              </p>
-              <CodeBlock 
-                code={repositoryInterfaceCode} 
-                title="IRepository.cs"
                 language="csharp"
               />
             </div>
