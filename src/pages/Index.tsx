@@ -194,7 +194,7 @@ namespace Bookstore.Application.Listeners.Domain
               Modern Domain-Driven Design for .NET
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-              Build Elegant, Domain-Focused Applications
+              Simplify Domain-Driven Design with OpenDDD.NET
             </h1>
             <p className="text-xl text-foreground/70 mb-8 leading-relaxed">
               OpenDDD.NET provides a lightweight framework for implementing Domain-Driven Design patterns in your ASP.NET Core applications with clarity and precision.
