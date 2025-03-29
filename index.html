@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55RMQXWN5N"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-55RMQXWN5N');
-    </script>
-
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OpenDDD.NET - Modern Framework for ASP.NET Core Developers</title>
+    <link rel="canonical" href="https://www.openddd.net/" />
     <meta name="description" content="OpenDDD is a powerful, lightweight framework for Domain-Driven Design in ASP.NET Core. Build clean, scalable, and maintainable .NET applications with ease." />
     <meta name="author" content="OpenDDD" />
 
@@ -40,17 +32,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
 
     <!-- Manifest and BrowserConfig -->
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/site.webmanifest" type="application/manifest+json">
 
     <!-- For Windows tiles -->
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/icons/ms-icon-144x144.png">
 
     <!-- Chrome/Android Theme -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1E1E1E" media="(prefers-color-scheme: dark)">
 
     <!-- Social Sharing (Open Graph) -->
     <meta property="og:title" content="OpenDDD.NET - Modern Framework for ASP.NET Core Developers" />
@@ -58,12 +48,14 @@
     <meta property="og:url" content="https://www.openddd.net/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://github.com/runemalm/OpenDDD.NET/raw/master/ddd-graph.png" />
+    <meta property="og:image:alt" content="A visual overview of Domain-Driven Design using OpenDDD.NET" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="OpenDDD.NET" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@openddd" />
     <meta name="twitter:image" content="https://github.com/runemalm/OpenDDD.NET/raw/master/ddd-graph.png" />
     
-    <link rel="canonical" href="https://www.openddd.net/" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -84,11 +76,25 @@
       }
     }
     </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-55RMQXWN5N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-55RMQXWN5N');
+    </script>
     <script type="module" crossorigin src="/assets/index-yCayq19H.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-CWrzQdlu.css">
   </head>
 
   <body>
+    <noscript>
+      <p style="text-align: center; color: #999;">This website requires JavaScript to function properly.</p>
+    </noscript>
+
     <div id="root"></div>
     <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
